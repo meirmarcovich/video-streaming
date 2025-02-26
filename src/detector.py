@@ -11,7 +11,7 @@ def initialize_background_subtractor(frame):
 def detect_motion(frame, fgbg):
     fgmask = fgbg.apply(pre_process_frame(frame))
     contours, _ = cv2.findContours(fgmask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    return [cv2.boundingRect(cnt) for cnt in contours if cv2.contourArea(cnt) > 100]
+    return [cv2.boundingRect(cnt) for cnt in contours if cv2.contourArea(cnt) > 1000]
 
 def detector(frame_queue, detection_queue):
     print("Detector started, waiting for frames...")
